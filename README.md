@@ -28,6 +28,7 @@ $ cf push
 Then set the Environment Variables accordingly
 ```cmd
 $ cf set-env <your app name> BYD_SERVER http://<your byd server>
+$ cf set-env <your app name> BYD_PORT ""
 $ cf set-env <your app name> BYD_AUTH <[Base64 Encoded] user:password>
 $ cf set-env <your app name> BYD_PATH <path of the custom OData Service used for creation of Sales Orders>
 $ cf set-env <your app name> BYD_DEFAULT_BP <Defuatl Business Partner (BP) used for creation of Sales Order>
@@ -36,11 +37,13 @@ $ cf set-env <your app name> BYD_DEFAULT_BP <Defuatl Business Partner (BP) used 
 For Example:
 ```cmd
 $ cf set-env BydDigitalAssistant BYD_SERVER https://my123456.sapbydesign.com
+$ cf set-env  BydDigitalAssistant BYD_PORT ""
 $ cf set-env BydDigitalAssistant BYD_AUTH ABCDEFGHIJKLMNOPQRSTUVWZYZ123456789==
 cf set-env  BydDigitalAssistant BYD_PATH /sap/byd/odata/cust/v1/khsalesorderdemo
 cf set-env  BydDigitalAssistant BYD_DEFAULT_BP CP100110
 
-* Generate the Base64 Encoded using Postman application
+* Note : Set the BYD_PORT to blank , since there is no PORT value in the URL of BYD
+* Note : Generate the Base64 Encoded using Postman application
 * Note: user can decide to use UserName and Password authentication , in that case user has to adapt the Authorization (request header of OData POST service call) webapplication coding accordingly
 ```
 Restart your application (so it can read the new environment variables)
